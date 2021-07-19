@@ -10,21 +10,59 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/game.json", {onProgress: UnityProgress});
-     window.addEventListener("resize",onResize);
-      
-      function onResize()
-      {
-        gameInstance.SendMessage("FullScreenTest","SetWidth",window.innerWidth);
-        gameInstance.SendMessage("FullScreenTest","SetHeight",window.innerHeight);
-        gameInstance.SendMessage("FullScreenTest","OnResize");
-      }
-      
-    </script>
+     </script>
   </head>
-  
-  <body style = "margin:0; overflow:hidden;">
-    <div id="gameContainer"></div> 
-  </body>
-  
-</html>
+  <body><div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v11.0&appId=302890631518977&autoLogAppEvents=1" nonce="b0ZvHOfO">
+    </script>
+    
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '302890631518977',
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+    FB.AppEvents.logPageView();
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div
+         class="fb-page" 
+         data-href="https://www.facebook.com/EdenXStar/"  
+         data-width="280"
+         data-height="250"
+         data-small-header="true" 
+         data-tabs="timeline"
+         data-adapt-container-width="true" 
+         data-hide-cover="false" 
+         data-show-posts="false"
+         data-show-facepile="true">
+         
+      <blockquote cite="https://www.facebook.com/EdenXStar/" 
+                  class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/EdenXStar/">
+        伊甸之星</a></blockquote>
+      </div>
+        <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-size="small"
+  data-show-faces="true">
+   </div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      </div>
+    </div>
+  </body>
+</html>
